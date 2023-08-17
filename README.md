@@ -1,2 +1,4 @@
-# ToDoList
-A universal web to-do list
+# Тестовое приложение
+
+npm start - запуск сборки
+npm run server - запуск сервера
