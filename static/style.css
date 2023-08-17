@@ -1,0 +1,21 @@
+* {
+    background-color: antiquewhite;
+    border-color: brown;
+}
+
+.logo {
+    height: 80px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 40;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background-color:lavenderblush;
+}
+
+.task {
+    height: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 4px;
+    background-color:beige;
+}
