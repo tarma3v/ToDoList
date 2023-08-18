@@ -26,5 +26,7 @@ module.exports = {
 
   optimization: {
     minimize: false
-  }
+  },
+  
+  devtool: 'inline-source-map'
 };
