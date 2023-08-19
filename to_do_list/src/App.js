@@ -8,34 +8,21 @@ import DeleteButton from "./components/UI/Buttons/DeleteButton";
 
 function App() {
   let todo = new ToDoStore();
-  const [tasks, setTasks] = useState(todo.restore());
+  const [tasks, setTasks] = useState(todo.getAllItems());
 
   const [task, setTask] = useState('');
 
   const addNewTask = (e) => {
-    e.preventDefault();
-    const newTask = {
-      id: Date.now(),
-      title: task,
-      done: "false"
-    }
-
-    // consistent using class
-    setTasks([...tasks, newTask]);
-    todo.addItem(tasks);
-
-    setTask('');
+    todo.addItem(e, tasks, setTasks, task, setTask);
   }
 
   const deleteDoneTasks = () => {
-    let notDoneTasks = [];
-    for (let item of tasks) {
-      if (item.done == "false") {
-        notDoneTasks.push(item);
-      }
-    }
-    setTasks(notDoneTasks);
-    todo.deleteDoneTasks(tasks);
+    todo.deleteDoneTasks(tasks, setTasks);
+  }
+
+  const onTaskItemChanged = (id, state) => {
+    todo.updateItem(id, state);
+    setTasks(todo.getAllItems());
   }
 
   return (
@@ -49,7 +36,7 @@ function App() {
        />
         <MyButton onClick={addNewTask}>Добавить задание!</MyButton>
       </form>
-      <TaskList tasks={tasks} title="Список заданий" />
+      <TaskList tasks={tasks} title="Список заданий" onTaskItemChanged={onTaskItemChanged}/>
       <DeleteButton onClick={deleteDoneTasks}>Очистить выполненные задания</DeleteButton>
     </div>
   );
