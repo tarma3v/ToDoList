@@ -31,16 +31,7 @@ export class ToDoStore {
       }
   }
 
-  updateItem = (id, done) => {
-    let tasks_json = localStorage.getItem("tasks");
-    let tasks = JSON.parse(tasks_json);
-    // find elem and change state, save to lS tasks
-    for (let task of tasks) {
-      if (task.id == id) {
-        task.done = done == "true" ? "false" : "true";
-        break;
-      }
-    }
+  updateItem = (tasks) => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 }

@@ -25,7 +25,15 @@ function App() {
   }
 
   const onTaskItemChanged = (id, state) => {
-    todo.updateItem(id, state);
+    let tasks_json = todo.getAllItems();
+    for (let task of tasks_json) {
+      if (task.id == id) {
+        task.done = state == "true" ? "false" : "true";
+        break;
+      }
+    }
+
+    todo.updateItem(tasks_json);
     setTasks(todo.getAllItems());
   }
 
