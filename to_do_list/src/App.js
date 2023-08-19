@@ -13,11 +13,15 @@ function App() {
   const [task, setTask] = useState('');
 
   const addNewTask = (e) => {
-    todo.addItem(e, tasks, setTasks, task, setTask);
+    e.preventDefault(); 
+    todo.addItem(tasks, task);
+    setTasks(todo.getAllItems());
+    setTask('');
   }
 
   const deleteDoneTasks = () => {
-    todo.deleteDoneTasks(tasks, setTasks);
+    todo.deleteDoneTasks(tasks);
+    setTasks(todo.getAllItems());
   }
 
   const onTaskItemChanged = (id, state) => {

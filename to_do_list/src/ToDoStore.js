@@ -1,25 +1,20 @@
 export class ToDoStore {
-  addItem = (e, tasks, setTasks, task, setTask) => {
-    e.preventDefault();
+  addItem = (tasks, task) => {
     const newTask = {
       id: Date.now(),
       title: task,
       done: "false"
     }
     this.setItems([...tasks, newTask]);
-    setTasks(this.getAllItems());
-
-    setTask('');
   }
 
-  deleteDoneTasks = (tasks, setTasks) => {
+  deleteDoneTasks = (tasks) => {
     let notDoneTasks = [];
     for (let item of tasks) {
       if (item.done == "false") {
         notDoneTasks.push(item);
       }
     }
-    setTasks(notDoneTasks);
     this.setItems(notDoneTasks);
   }
 
