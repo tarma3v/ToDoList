@@ -28,7 +28,7 @@ function App() {
     let tasks_json = todo.getAllItems();
     for (let task of tasks_json) {
       if (task.id == id) {
-        task.done = state == "true" ? "false" : "true";
+        task.done = state;
         break;
       }
     }
